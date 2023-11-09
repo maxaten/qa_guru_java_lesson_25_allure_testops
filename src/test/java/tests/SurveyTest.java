@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -15,6 +16,7 @@ public class SurveyTest extends TestBase{
 
 
     @Test
+    @Disabled("Задизейблено, чтобы не спамить письмами в БД")
     @Tag("smoke")
     @DisplayName("Отправка обратной связи по недостающему товару")
     public void fillSurveyFormTest() {
