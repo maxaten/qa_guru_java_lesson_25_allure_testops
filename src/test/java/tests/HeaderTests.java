@@ -1,89 +1,58 @@
 package tests;
 
 import data.NameProductsRandom;
-import io.qameta.allure.Description;
 import org.junit.jupiter.api.*;
 import pages.ResultSearchPage;
-import pages.StoresPage;
-import pages.SurveyPage;
 import pages.components.BurgerModal;
 import pages.components.HeaderComponent;
-import pages.components.SurveyConfirmModal;
 
-@Tag("Future158")
+
+
+@Tag("header")
 public class HeaderTests extends TestBase {
 
     HeaderComponent header = new HeaderComponent();
     ResultSearchPage resultSearchPage = new ResultSearchPage();
     NameProductsRandom products = new NameProductsRandom();
-    StoresPage storesPage = new StoresPage();
-    BurgerModal burgerModal = new BurgerModal();
-    SurveyPage survey = new SurveyPage();
-    SurveyConfirmModal surveyConfirm = new SurveyConfirmModal();
+    BurgerModal burger = new BurgerModal();
+
+
+    String main = "/?city=astana";
 
 
     @Test
     @DisplayName("Поиск продукта")
-    @Tag("Smoke")
+    @Tag("smoke")
     public void fillSearchFormTest(){
-        header.openPage().
-                productSearch(products.product);
+        header.openPage(main).
+                productSearch(products.name);
 
-        resultSearchPage.checkProduct(products.product);
+        resultSearchPage.checkProduct(products.name);
 
     }
 
     @Test
-    @Tag("Regress")
+    @Tag("regress")
     @DisplayName("Переключение языка на казахский")
     public void switchLanguageKzTest(){
-        header.openPage()
+        header.openPage(main)
                 .selectLanguage(header.langKZ);
 
-        header.checkLanguageKZ(header.catalogText);
+        header.checkLanguageKZ(header.catalogName);
     }
 
-    @Test
-    @Tag("Smoke")
-    @DisplayName("Поиск магазина")
-    public void searchStoreTest() {
-        header.openPage()
-                .choiceStoresSection(header.navigationElementRU[6]);
-        storesPage.inputStore(storesPage.storeName);
-
-        storesPage.checkInputStoreName(storesPage.storeName);
-    }
 
     @Test
-    @Tag("Regress")
+    @Tag("regress")
     @DisplayName("Проверка отображения элементов меню")
     public void checkBurgerMenuTest() {
-        header.openPage();
-        header.clickBurgerButton();
+        header.openPage(main)
+                .clickBurgerButton();
 
-        burgerModal.getBurgerMenu(burgerModal.menuItems[0],burgerModal.menuItems[1],burgerModal.menuItems[2],
-                burgerModal.menuItems[3],burgerModal.menuItems[4],burgerModal.menuItems[5],
-                burgerModal.menuItems[6],burgerModal.menuItems[7],burgerModal.menuItems[8],
-                burgerModal.menuItems[9],burgerModal.menuItems[10],burgerModal.menuItems[11],
-                burgerModal.menuItems[12],burgerModal.menuItems[13]);
-    }
-
-
-    @Test
-    @Disabled ///Задизейблено, чтобы не спамить письмами в БД
-    @Tag("Smoke")
-    @DisplayName("Отправка обратной связи по недостоющему товару")
-    public void fillSurveyFormTest(){
-        survey.openPage();
-        survey.setCity(survey.city);
-        survey.chooseStoreAddress();
-        survey.setProduct(survey.product1, survey.product2);
-        survey.setOther(survey.other);
-        survey.setPhoneNumber(survey.phoneNumber);
-        survey.setEmail(survey.email);
-        survey.sendAnswerForSurvey();
-
-        surveyConfirm.successfulConfirm(surveyConfirm.confirmText);
-
+        burger.getBurgerMenu(burger.menu[0], burger.menu[1], burger.menu[2],
+                burger.menu[3], burger.menu[4], burger.menu[5],
+                burger.menu[6], burger.menu[7], burger.menu[8],
+                burger.menu[9], burger.menu[10], burger.menu[11],
+                burger.menu[12], burger.menu[13]);
     }
 }

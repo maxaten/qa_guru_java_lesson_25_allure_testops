@@ -66,8 +66,26 @@ test {
     }
 }
 
-task all_test(type: Test){
+task all_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags("header", "shops", "survey")
+    }
+}
+
+task header_component(type: Test){
     useJUnitPlatform{
-        includeTags("Future158")
+        includeTags("header")
+    }
+}
+
+task shops_page_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("shops")
+    }
+}
+
+task survey_page_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("survey")
     }
 }

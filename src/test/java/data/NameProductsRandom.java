@@ -6,7 +6,7 @@ public class NameProductsRandom {
 
     Faker faker = new Faker();
 
-    public String product = getRandomProduct();
+    public String name = getRandomProduct();
 
 
     public String getRandomProduct() {

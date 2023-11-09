@@ -2,14 +2,15 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import com.github.javafaker.Faker;
+import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class SurveyPage {
 
     Faker faker = new Faker();
+
 
     SelenideElement cityField = $(".interview__form .interview__select-value"),
     cityList = $(".interview .interview__select-list"),
@@ -20,37 +21,47 @@ public class SurveyPage {
     otherInput = $("[placeholder='Напишите другой вариант']"),
     phoneInput = $("[placeholder='Укажите номер']"),
     emailInput = $("[placeholder='Укажите e-mail']"),
-    submitButton = $(".interview__btn").$(byText("Отправить"));
+    checkBoxPrivacy = $("label[for='Privacy']"),
+    submitButton = $("button.interview__btn");
+
 
     public String city = getRandomCity(),
     product1 = getRandomProduct(),
     product2 = getRandomProduct(),
-    phoneNumber = getRandomNumberPhone(),
-    email = getRandomEmail(),
-    other = "Другое";
+    other = "Другое",
+    uri = "/interview";
 
 
+    @Step("Открытие страницы опроса по товару")
+    public SurveyPage openPage(String value){
+        open(value);
 
-    public void openPage(){
-        open("interview");
+        return this;
     }
 
+
     private String getRandomCity(){
-        String[] city = {"Астана", "Алматы", "Караганда", "Петропавловск", "Москва"};
+        String[] city = {"Астана", "Алматы", "Караганда", "Петропавловск"};
 
         return faker.options().option(city);
     }
 
-
-    public void setCity(String value){
+    @Step("Выбор города {value}")
+    public SurveyPage setCity(String value){
         cityField.click();
         cityList.$(byText(value)).click();
+
+        return this;
     }
 
-    public void chooseStoreAddress(){
-        storeInput.click();
-        storeList.$("li",2).click();
 
+
+    @Step("Выбор магазина из списка")
+    public SurveyPage chooseStoreAddress(){
+        storeInput.click();
+        storeList.$("li", 2).click();
+
+        return this;
     }
 
     private String getRandomProduct(){
@@ -59,35 +70,25 @@ public class SurveyPage {
         return faker.options().option(product);
     }
 
-    public void setProduct(String value, String value2){
-        productInput.setValue(value).setValue(value2);
+    @Step("Выбор товара: {value1}, {value2} ")
+    public SurveyPage setProduct(String value1, String value2){
+        productInput.setValue(value1).setValue(value2);
+
+        return this;
     }
 
-    public void setOther(String value){
+    @Step("Выбор категории товара: {value}")
+    public SurveyPage setOther(String value){
         checkboxProduct.click();
         otherInput.setValue(value);
+
+        return this;
     }
 
-    private String getRandomNumberPhone(){
-        return "7707" + faker.phoneNumber().subscriberNumber(7);
-    }
-
-    public void setPhoneNumber(String value){
-        phoneInput.setValue(value);
-    }
-
-    private String getRandomEmail(){
-        return faker.internet().emailAddress();
-    }
-
-    public void setEmail(String value){
-        emailInput.setValue(value);
-    }
 
     public void sendAnswerForSurvey(){
         submitButton.click();
     }
-
 
 }
 

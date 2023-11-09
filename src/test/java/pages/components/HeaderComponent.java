@@ -22,58 +22,39 @@ public class HeaderComponent {
     catalog = $(".header-nav .catalog-stocks-link"),
     stocks = $(".header-nav .stocks-link");
 
-    public String[] navigationElementRU = {
-            "Каталог скидок", "Акции", "Magnum Club",
-            "Magnum Go", "Наши бренды", "Готовим с Magnum",
-            "Магазины", "Контакты", "О компании"
-    };
-
-    String[] navigationElementKZ = {
-            "Әлеуметтік желіліктер каталогы", "Науқандар", "Magnum Club",
-            "Magnum Go", "Брендтеріміз", "Magnumмен дайындаймыз",
-            "Дүкендер", "Байланыс", "Компания туралы"
-    };
 
 
     public String langKZ = "Қазақша",
-    catalogText = "Жеңілдіктер каталогы";
+    catalogName = "Жеңілдіктер каталогы";
 
-    @Step("Открыть страницу")
-    public HeaderComponent openPage(){
-        open("/?city=astana");
+    @Step("Открытие главной страницы {value}")
+    public HeaderComponent openPage(String value){
+        open(value);
         return this;
     }
 
 
-    @Step("Ввести продукт")
+    @Step("Ввод продукта: {value}")
     public void productSearch(String value){
         inputSearch.setValue(value).submit();
     }
 
 
-    @Step()
-    public HeaderComponent selectLanguage(String value){
+    @Step("Выбор казахского языка")
+    public void selectLanguage(String value){
         language.click();
         dropLanguageMenu.$(byText(value)).click();
-        return this;
     }
 
-    @Step
-    public HeaderComponent checkLanguageKZ(String value){
+    @Step("Проверка смена названия каталога на: {value}")
+    public void checkLanguageKZ(String value){
         catalog.shouldHave(Condition.text(value));
-        return this;
     }
 
-    @Step
-    public HeaderComponent choiceStoresSection(String value){
-        navigationElements.$(byText(value)).click();
-        return this;
-    }
 
-    @Step
-    public HeaderComponent clickBurgerButton() {
+    @Step("Открытие бургер-меню")
+    public void clickBurgerButton() {
         burgerButton.click();
-        return this;
     }
 }
 
