@@ -17,18 +17,18 @@ public class ShopFindsTests extends TestBase{
     @Tag("smoke")
     @DisplayName("Поиск магазина")
     public void searchStoreTest() {
-        shops.openPage()
-                .inputStore(shops.shopsName);
+        shops.openPage(shops.uri)
+                .inputStore(shops.shopName);
 
-        shops.checkInputStoreName(shops.shopsName);
+        shops.checkInputStoreName(shops.shopName);
     }
 
     @Test
     @Tag("smoke")
     @DisplayName("Проверка описания магазина")
     public void descriptionShop() {
-        shops.openPage()
-                .inputStore(shops.shopsName)
+        shops.openPage(shops.uri)
+                .inputStore(shops.shopName)
                 .choiceShop();
 
         shops.checkSummaryShop(shops.summary);

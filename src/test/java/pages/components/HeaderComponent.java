@@ -25,14 +25,16 @@ public class HeaderComponent {
 
 
     public String langKZ = "Қазақша",
-    catalogName = "Жеңілдіктер каталогы";
+    catalogName = "Жеңілдіктер каталогы",
+            mainPage = "/?city=astana";
 
-    @Step("Открытие главной страницы {value}")
+
+    @Step("Открытие страницы {value} ")
     public HeaderComponent openPage(String value){
         open(value);
+
         return this;
     }
-
 
     @Step("Ввод продукта: {value}")
     public void productSearch(String value){
@@ -51,10 +53,8 @@ public class HeaderComponent {
         catalog.shouldHave(Condition.text(value));
     }
 
-
     @Step("Открытие бургер-меню")
     public void clickBurgerButton() {
         burgerButton.click();
     }
 }
-

@@ -32,13 +32,12 @@ public class SurveyPage {
     uri = "/interview";
 
 
-    @Step("Открытие страницы опроса по товару")
+    @Step("Открытие страницы опроса по товару {value}")
     public SurveyPage openPage(String value){
         open(value);
 
         return this;
     }
-
 
     private String getRandomCity(){
         String[] city = {"Астана", "Алматы", "Караганда", "Петропавловск"};
@@ -53,8 +52,6 @@ public class SurveyPage {
 
         return this;
     }
-
-
 
     @Step("Выбор магазина из списка")
     public SurveyPage chooseStoreAddress(){
@@ -85,12 +82,7 @@ public class SurveyPage {
         return this;
     }
 
-
     public void sendAnswerForSurvey(){
         submitButton.click();
     }
-
 }
-
-
-

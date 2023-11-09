@@ -17,14 +17,12 @@ public class HeaderTests extends TestBase {
     BurgerModal burger = new BurgerModal();
 
 
-    String main = "/?city=astana";
-
 
     @Test
     @DisplayName("Поиск продукта")
     @Tag("smoke")
     public void fillSearchFormTest(){
-        header.openPage(main).
+        header.openPage(header.mainPage).
                 productSearch(products.name);
 
         resultSearchPage.checkProduct(products.name);
@@ -35,18 +33,17 @@ public class HeaderTests extends TestBase {
     @Tag("regress")
     @DisplayName("Переключение языка на казахский")
     public void switchLanguageKzTest(){
-        header.openPage(main)
+        header.openPage(header.mainPage)
                 .selectLanguage(header.langKZ);
 
         header.checkLanguageKZ(header.catalogName);
     }
 
-
     @Test
     @Tag("regress")
     @DisplayName("Проверка отображения элементов меню")
     public void checkBurgerMenuTest() {
-        header.openPage(main)
+        header.openPage(header.mainPage)
                 .clickBurgerButton();
 
         burger.getBurgerMenu(burger.menu[0], burger.menu[1], burger.menu[2],

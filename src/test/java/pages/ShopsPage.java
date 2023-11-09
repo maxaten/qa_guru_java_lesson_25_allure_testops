@@ -17,18 +17,19 @@ public class ShopsPage {
     shopList = $("div.map-address__descr");
 
 
-    public String shopsName = "Назарбаев";
-    public  String summary = "Daily\n" +
+    public String shopName = "Назарбаев",
+            summary = "Daily\n" +
             "Magnum - НАЗАРБАЕВ УНИВЕРСИТЕТ\n" +
             "г. Астана, Кабанбай Батыра 53\n" +
-            "Режим работы:09:00 - 23:00";
+            "Режим работы:09:00 - 23:00",
 
-    @Step("Открытие страницы")
-    public ShopsPage openPage(){
-        open("/shops?city=astana");
+    uri = "/shops?city=astana";
+
+    @Step("Открытие страницы {value}")
+    public ShopsPage openPage(String value){
+        open(value);
         return this;
     }
-
 
     @Step("Ввод {value} в поле 'адрес магазина'")
     public ShopsPage inputStore(String value) {
@@ -51,8 +52,4 @@ public class ShopsPage {
     public void checkSummaryShop(String value){
         textSummary.shouldHave(Condition.text(value));
     }
-
-
-
-
 }
