@@ -2,6 +2,7 @@ package pages.components;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -27,6 +28,7 @@ public class BurgerModal {
     };
 
 
+    @Step("Отображаются элементы меню")
     public void getBurgerMenu(String value0, String value1, String value2, String value3, String value4,
                               String value5, String value6, String value7, String value8, String value9,
                               String value10, String value11, String value12 , String value13) {
