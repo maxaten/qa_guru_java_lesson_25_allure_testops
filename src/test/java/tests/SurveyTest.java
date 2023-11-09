@@ -16,6 +16,7 @@ public class SurveyTest extends TestBase{
 
 
     @Test
+    @Disabled("Задизейблено, чтобы не спамить письмами в БД")
     @Tag("smoke")
     @DisplayName("Отправка обратной связи по недостающему товару")
     public void fillSurveyFormTest() {
