@@ -1,0 +1,17 @@
+{
+  "base": {
+    "logo": "",
+    "project": "qa.guru",
+    "environment": "Preprod",
+    "comment": "@ereneger123",
+    "reportLink": "google.com",
+    "language": "en",
+    "allureFolder": "build/reports/allure-report/allureReport",
+    "enableChart": true
+  },
+  "telegram": {
+    "token": "6082911238:AAGxslWa4UPEE1BX-BzEvDP3ztCpdheUE8w",
+    "chat": "-1001879713125",
+    "replyTo": ""
+  }
+}
