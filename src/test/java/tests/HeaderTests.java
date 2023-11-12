@@ -46,10 +46,6 @@ public class HeaderTests extends TestBase {
         header.openPage(header.mainPage)
                 .clickBurgerButton();
 
-        burger.getBurgerMenu(burger.menu[0], burger.menu[1], burger.menu[2],
-                burger.menu[3], burger.menu[4], burger.menu[5],
-                burger.menu[6], burger.menu[7], burger.menu[8],
-                burger.menu[9], burger.menu[10], burger.menu[11],
-                burger.menu[12], burger.menu[13]);
+        burger.getBurgerMenu(burger.menu);
     }
 }

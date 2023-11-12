@@ -29,11 +29,9 @@ public class BurgerModal {
 
 
     @Step("Отображаются элементы меню")
-    public void getBurgerMenu(String value0, String value1, String value2, String value3, String value4,
-                              String value5, String value6, String value7, String value8, String value9,
-                              String value10, String value11, String value12 , String value13) {
-        for (String menuItem : menu) {
-            burgerModal.shouldHave(Condition.text(menuItem));
+    public void getBurgerMenu(String... values) {
+        for (String value : values) {
+            burgerModal.shouldHave(Condition.text(value));
         }
     }
 }

@@ -8,10 +8,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class ShopsPage {
-    SelenideElement storesTitle = $(".our-stores .title"),
-    oursStores = $(".is-active.our-stores__link"),
-    filterStores = $(".map-card.skeleton-wrapper"),
-    storesSearchInput = $("input.map-card__search-input"),
+    SelenideElement storesSearchInput = $("input.map-card__search-input"),
     firstStoreOnTheList = $(".map-card .map-address"),
     textSummary = $("div.address-card__descr"),
     shopList = $("div.map-address__descr");
@@ -43,9 +40,8 @@ public class ShopsPage {
     }
 
     @Step("Выбор магазина в списке")
-    public ShopsPage choiceShop() {
+    public void choiceShop() {
         shopList.$("div", 1).click();
-        return this;
     }
 
     @Step("Проверка описания магазина")

@@ -66,11 +66,6 @@ test {
     }
 }
 
-task all_tests(type: Test) {
-    useJUnitPlatform {
-        includeTags("header", "shops", "survey")
-    }
-}
 
 task header_component_tests(type: Test){
     useJUnitPlatform{

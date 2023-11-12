@@ -19,9 +19,6 @@ public class SurveyPage {
     productInput = $("[placeholder='Укажите товары']"),
     checkboxProduct = $("[for='other']"),
     otherInput = $("[placeholder='Напишите другой вариант']"),
-    phoneInput = $("[placeholder='Укажите номер']"),
-    emailInput = $("[placeholder='Укажите e-mail']"),
-    checkBoxPrivacy = $("label[for='Privacy']"),
     submitButton = $("button.interview__btn");
 
 

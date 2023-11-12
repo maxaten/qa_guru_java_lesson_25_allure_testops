@@ -9,18 +9,11 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class HeaderComponent {
-    SelenideElement headerWrapper = $(".header-wrapper[bis_skin_checked='1']"),
-    burgerButton = $(".burger .burger-top"),
-    title = $(".header-wrapper .header-top__logo"),
-    linkForCorpSite = $(".header-wrapper [href='https://corp.magnum.kz/ru']"),
+    SelenideElement burgerButton = $(".burger .burger-top"),
     inputSearch = $(".header [type='text']"),
-    groupDropDownSearch = $(".header-wrapper .search-link-btn"),
-    city = $(".header .header-top__address"),
     language = $(".header .header-top__language"),
     dropLanguageMenu = $(".header .header-top__language"),
-    navigationElements = $(".header-nav .header-nav__list"),
-    catalog = $(".header-nav .catalog-stocks-link"),
-    stocks = $(".header-nav .stocks-link");
+    catalog = $(".header-nav .catalog-stocks-link");
 
 
 
