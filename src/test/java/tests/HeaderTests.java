@@ -1,6 +1,7 @@
 package tests;
 
 import data.NameProductsRandom;
+import io.qameta.allure.Owner;
 import org.junit.jupiter.api.*;
 import pages.ResultSearchPage;
 import pages.components.BurgerModal;
@@ -19,8 +20,9 @@ public class HeaderTests extends TestBase {
 
 
     @Test
+    @Owner("Maksim A")
     @DisplayName("Поиск продукта")
-    @Tag("smoke")
+    @Tags({@Tag("regress"), @Tag("ui")})
     public void fillSearchFormTest(){
         header.openPage(header.mainPage).
                 productSearch(products.name);
@@ -30,7 +32,8 @@ public class HeaderTests extends TestBase {
     }
 
     @Test
-    @Tag("regress")
+    @Owner("Maksim A")
+    @Tags({@Tag("regress"), @Tag("ui")})
     @DisplayName("Переключение языка на казахский")
     public void switchLanguageKzTest(){
         header.openPage(header.mainPage)
@@ -40,7 +43,8 @@ public class HeaderTests extends TestBase {
     }
 
     @Test
-    @Tag("regress")
+    @Owner("Maksim A")
+    @Tags({@Tag("regress"), @Tag("ui")})
     @DisplayName("Проверка отображения элементов меню")
     public void checkBurgerMenuTest() {
         header.openPage(header.mainPage)

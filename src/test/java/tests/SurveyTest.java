@@ -1,9 +1,7 @@
 package tests;
 
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import io.qameta.allure.Owner;
+import org.junit.jupiter.api.*;
 import pages.SurveyPage;
 import pages.components.SurveyConfirmModal;
 
@@ -16,8 +14,9 @@ public class SurveyTest extends TestBase{
 
 
     @Test
+    @Owner("Maksim A")
     @Disabled("Задизейблено, чтобы не спамить письмами в БД")
-    @Tag("smoke")
+    @Tags({@Tag("smoke"), @Tag("ui")})
     @DisplayName("Отправка обратной связи по недостающему товару")
     public void fillSurveyFormTest() {
         survey.openPage(survey.uri)
